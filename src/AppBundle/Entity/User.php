@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -7,7 +8,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="DoctrineUser") */
+ * @ORM\Table(name="DoctrineUser")
+ */
 class User {
     /**
      * @ORM\Id @ORM\Column(type="integer")
@@ -16,20 +18,23 @@ class User {
      */
     public $id;
 
-    /** @ORM\Column(length=50) */
+    /**
+     * @ORM\Column(length=50)
+     * @Groups({"user"})
+     */
     public $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Group", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Group", inversedBy="users", cascade={"persist"})
      * @ORM\JoinTable(name="users_groups")
      * @Groups({"user"})
-     **/
+     */
     public $groups;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Address", mappedBy="user")
      * @Groups({"user"})
-     **/
+     */
     public $addresses;
 
     public function __construct () {
