@@ -11,7 +11,7 @@ services:
         calls:
             -   method:    "initDenormalizationContext"
                 arguments:
-                    - [ { groups: [ "user" ] } ]
+                    - { groups: [ "user" ] }
     resource.group:
         parent:    "api.resource"
         arguments: [ "AppBundle\Entity\Group" ]

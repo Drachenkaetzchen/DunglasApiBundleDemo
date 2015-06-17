@@ -18,8 +18,8 @@ class Group
     public $id;
 
     /** @ORM\Column(length=50,unique=true)
-      *@Groups({"user"})
-     */
+      * @Groups({"user"})
+      */
     public $name;
 
     /**
